@@ -1,180 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hyperion-java | Portfolio</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0d0d0d;
-      color: #f5f5f5;
-      overflow-x: hidden;
-    }
-    .center-card {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .card {
-      background: #111;
-      border-radius: 20px;
-      padding: 2rem;
-      max-width: 1000px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 4px 25px rgba(0,0,0,0.5);
-      transform: translateY(30px);
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-    }
-    @keyframes fadeUp {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    h1 {
-      font-size: 2.5rem;
-      color: #0066ff;
-      margin-bottom: 0.25rem;
-    }
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 400;
-      margin-top: 0;
-      color: #bbb;
-    }
-    .contact {
-      margin: 1rem 0;
-      font-size: 0.95rem;
-      color: #aaa;
-    }
-    a {
-      color: #0066ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .btn {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.7rem 1.2rem;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      background: #0066ff;
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,102,255,0.3);
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-    }
-    .btn:hover {
-      background: #0052cc;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,102,255,0.4);
-    }
-    .section {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.6s ease, opacity 0.6s ease;
-      margin-top: 1rem;
-      text-align: left;
-    }
-    .section.open {
-      max-height: 5000px;
-      opacity: 1;
-    }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .project-card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      padding: 1rem;
-      border-left: 4px solid #0066ff;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(0,102,255,0.25);
-    }
-    .project-card h3 {
-      margin: 0 0 0.5rem;
-      color: #0066ff;
-      font-size: 1.2rem;
-    }
-    .project-card p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: #ddd;
-      line-height: 1.4;
-    }
-    @media(max-width:600px){
-      h1{font-size:2rem;}
-      h2{font-size:1rem;}
-      .card{padding:1.5rem;}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyperion-java Portfolio & Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:#0d0d0d;color:#e0e0e0;scroll-behavior:smooth;line-height:1.5;}
+a{text-decoration:none;color:#ff073a;}
+button{cursor:pointer;outline:none;}
+
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;position:sticky;top:0;background:#111;z-index:1000;flex-wrap:wrap;border-bottom:1px solid #222;}
+header h1{color:#ff073a;font-weight:700;font-size:1.8rem;}
+nav ul{display:flex;gap:25px;flex-wrap:wrap;list-style:none;}
+nav a{color:#e0e0e0;font-weight:500;transition:.3s;}
+nav a:hover,nav a.active{color:#ff073a;}
+
+/* Hero */
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:70vh;background:linear-gradient(135deg,#111,#1a1a1a);padding:0 20px;}
+.hero h2{font-size:2.8rem;color:#ff073a;margin-bottom:15px;}
+.hero p{font-size:1.2rem;max-width:600px;color:#ccc;margin-bottom:30px;}
+.hero button{padding:14px 30px;background:#ff073a;border:none;border-radius:6px;color:#fff;font-weight:600;transition:.3s;}
+.hero button:hover{background:#e60033;}
+
+/* Filter */
+.filter-buttons{display:flex;justify-content:center;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
+.filter-buttons button{padding:10px 20px;border:none;border-radius:6px;background:#222;color:#fff;font-weight:600;transition:.3s;}
+.filter-buttons button:hover,.filter-buttons button.active{background:#ff073a;}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-bottom:60px;padding:0 20px;}
+.project-card{background:#1a1a1a;border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer;display:flex;flex-direction:column;}
+.project-card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(0,0,0,.6);}
+.project-card img{width:100%;height:180px;object-fit:cover;}
+.project-card-content{padding:15px;display:flex;flex-direction:column;flex-grow:1;}
+.project-card h3{color:#ff073a;margin-bottom:10px;font-size:1.2rem;}
+.project-card p{color:#ccc;font-size:.95rem;flex-grow:1;margin-bottom:10px;}
+.project-card button{background:#ff073a;color:#fff;border:none;padding:10px;border-radius:6px;font-weight:600;transition:.3s;}
+.project-card button:hover{background:#e60033;}
+
+/* Modals */
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:10000;padding:10px;}
+.modal.active{display:flex;animation:fadeIn .4s ease-in-out;}
+.modal-content{background:#1a1a1a;border-radius:12px;max-width:700px;width:100%;padding:20px;text-align:center;overflow-y:auto;max-height:90vh;position:relative;}
+.modal-content img{width:100%;border-radius:12px;margin-bottom:15px;}
+.modal-content h2{color:#ff073a;font-size:1.6rem;margin-bottom:15px;}
+.modal-content p{color:#ccc;margin-bottom:20px;}
+.modal-content button{background:#ff073a;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:600;margin:5px;transition:.3s;}
+.modal-content button:hover{background:#e60033;}
+.modal-close{position:absolute;top:10px;right:10px;background:#ff073a;color:#fff;border:none;border-radius:50%;width:35px;height:35px;font-weight:700;cursor:pointer;}
+.modal-close:hover{background:#e60033;}
+
+/* Cart Button */
+.cart-btn{position:fixed;bottom:25px;right:25px;background:#ff073a;border:none;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;justify-content:center;align-items:center;font-size:1.5rem;box-shadow:0 6px 25px rgba(0,0,0,.5);z-index:999;transition:.3s;}
+.cart-btn:hover{background:#e60033;transform:scale(1.05);}
+
+/* Cart Modal */
+.cart-box{background:#1a1a1a;border-radius:12px;max-width:500px;width:95%;padding:20px;position:relative;}
+.cart-box h3{color:#ff073a;text-align:center;margin-bottom:15px;}
+.cart-item{display:flex;justify-content:space-between;font-size:.95rem;color:#ccc;padding:8px 0;border-bottom:1px solid #333;}
+.cart-item button{background:#e60033;color:#fff;border:none;border-radius:4px;padding:2px 6px;font-size:.8rem;}
+.cart-total{font-weight:600;margin-top:10px;text-align:right;}
+.cart-actions{display:flex;justify-content:space-between;align-items:center;margin-top:15px;flex-wrap:wrap;gap:10px;}
+.cart-actions button{background:#ff073a;border:none;border-radius:6px;color:#fff;padding:10px 15px;font-weight:600;transition:.3s;}
+.cart-actions button:hover{background:#e60033;}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:768px){.hero h2{font-size:2rem;}.projects-grid{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-  <div class="center-card">
-    <div class="card">
-      <h1>Hyperion-java</h1>
-      <h2>Java Developer</h2>
-      <p class="contact">📧 <a href="mailto:nighthyperion217@gmail.com">nighthyperion217@gmail.com</a></p>
-      <p class="contact">💻 <a href="https://github.com/Hyperion-java" target="_blank">github.com/Hyperion-java</a></p>
-      
-      <button class="btn" onclick="toggleSection('about')">About Me</button>
-      <button class="btn" onclick="toggleSection('projects')">Projects</button>
-      
-      <div id="about" class="section">
-        <p>I'm a passionate Java developer focused on building bold, polished, and impactful projects. I combine creativity with solid engineering to create solutions that stand out while remaining professional and efficient.</p>
-      </div>
-      
-      <div id="projects" class="section">
-        <div id="project-grid" class="project-grid"></div>
-      </div>
+
+<header>
+  <h1>Hyperion-java</h1>
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <h2>Professional Portfolio & Shop</h2>
+  <p>Discover premium plugins, worlds, YMLs, and services by Hyperion-java.</p>
+  <button onclick="document.getElementById('projectsGrid').scrollIntoView({behavior:'smooth'})">View Projects</button>
+</section>
+
+<section id="projects">
+  <h2 style="text-align:center;color:#fff;margin-bottom:20px;">Projects & Assets</h2>
+  <div class="filter-buttons">
+    <button class="active" data-filter="all">All</button>
+    <button data-filter="Plugins">Plugins</button>
+    <button data-filter="Worlds">Worlds</button>
+    <button data-filter="YMLs">YMLs</button>
+    <button data-filter="Services">Services</button>
+  </div>
+  <div class="projects-grid" id="projectsGrid"></div>
+</section>
+
+<!-- Project Modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <img id="modalImage" src="" alt="Project">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <div class="modal-nav">
+      <button id="prevProject">&larr; Previous</button>
+      <button id="nextProject">Next &rarr;</button>
+    </div>
+    <button id="modalBuy">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Markdown Modal -->
+<div class="modal" id="mdModal">
+  <div class="modal-content" id="mdBox">
+    <button class="modal-close" id="mdClose">&times;</button>
+    <div id="mdContent" style="text-align:left;color:#ccc;"></div>
+  </div>
+</div>
+
+<!-- Cart Button -->
+<button class="cart-btn" id="cartBtn">🛒</button>
+
+<!-- Cart Modal -->
+<div class="modal" id="cartModal">
+  <div class="cart-box">
+    <button class="modal-close" id="cartClose">&times;</button>
+    <h3>Your Cart</h3>
+    <div id="cartItems"></div>
+    <div class="cart-total" id="cartTotal">Total: $0</div>
+    <div class="cart-actions">
+      <button id="checkoutBtn">Checkout</button>
     </div>
   </div>
-  <script>
-    function toggleSection(id){
-      const section=document.getElementById(id);
-      section.classList.toggle('open');
-    }
+</div>
 
-    async function loadRepos() {
-      const grid = document.getElementById("project-grid");
-      try {
-        const res = await fetch("https://api.github.com/users/Hyperion-java/repos");
-        const repos = await res.json();
-        repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
-        repos.forEach(repo => {
-          const card = document.createElement("div");
-          card.className = "project-card";
-          card.onclick = () => window.open(repo.html_url, "_blank");
-          card.innerHTML = `
-            <h3>${repo.name}</h3>
-            <p>${repo.description ? repo.description : "No description available."}</p>
-          `;
-          grid.appendChild(card);
-        });
-      } catch (err) {
-        grid.innerHTML = "<p style='color:#f55'>Failed to load repositories.</p>";
-      }
-    }
+<section id="contact">
+  <h2 style="text-align:center;color:#fff;margin-bottom:20px;">Contact</h2>
+  <div class="contact-info" style="text-align:center;">
+    <p>Discord: <a href="https://discord.com/users/night_hyperion" target="_blank">night_hyperion</a></p>
+    <p>Email: <a href="mailto:nighthyperion217@gmail.com">nighthyperion217@gmail.com</a></p>
+  </div>
+</section>
 
-    loadRepos();
-  </script>
+<footer>
+  <p>&copy; 2025 Hyperion-java</p>
+</footer>
+
+<!-- marked.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+const projects = [
+  {name:"ItemX",category:"Plugins",description:"itemx.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=Plugin+1",price:40},
+  {name:"Adventure World",category:"Worlds",description:"adventureworld.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=World",price:60},
+  {name:"Config Pack",category:"YMLs",description:"configpack.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=YML",price:20},
+  {name:"Server Setup",category:"Services",description:"serversetup.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=Service",price:100}
+];
+
+const projectsGrid=document.getElementById('projectsGrid');
+const modal=document.getElementById('projectModal');
+const modalTitle=document.getElementById('modalTitle');
+const modalDesc=document.getElementById('modalDesc');
+const modalImage=document.getElementById('modalImage');
+const modalBuy=document.getElementById('modalBuy');
+const modalClose=document.getElementById('modalClose');
+const prevProject=document.getElementById('prevProject');
+const nextProject=document.getElementById('nextProject');
+const mdModal=document.getElementById('mdModal');
+const mdClose=document.getElementById('mdClose');
+const cartModal=document.getElementById('cartModal');
+const cartBtn=document.getElementById('cartBtn');
+const cartClose=document.getElementById('cartClose');
+const cartItems=document.getElementById('cartItems');
+const cartTotal=document.getElementById('cartTotal');
+const checkoutBtn=document.getElementById('checkoutBtn');
+
+let cart=[],currentIndex=0;
+
+function renderProjects(filter="all"){
+  projectsGrid.innerHTML="";
+  projects.filter(p=>filter==="all"||p.category===filter)
+  .forEach((p,index)=>{
+    const card=document.createElement('div');
+    card.className='project-card';
+    card.innerHTML=`
+      <img src="${p.image}" alt="${p.name}">
+      <div class="project-card-content">
+        <h3>${p.name}</h3>
+        <p><a href="#" onclick="openMarkdown('${p.description}');return false;">Read Description</a></p>
+        <button onclick="openModal(${index})">View Project</button>
+      </div>`;
+    projectsGrid.appendChild(card);
+  });
+}
+renderProjects();
+
+document.querySelectorAll('.filter-buttons button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-buttons button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProjects(btn.dataset.filter);
+  });
+});
+
+function openModal(i){
+  currentIndex=i;
+  const p=projects[i];
+  modalTitle.textContent=p.name;
+  modalDesc.textContent=`Price: $${p.price}`;
+  modalImage.src=p.image;
+  modalBuy.onclick=()=>addToCart(p);
+  modal.classList.add('active');
+}
+modalClose.onclick=()=>modal.classList.remove('active');
+window.onclick=e=>{
+  if(e.target===modal)modal.classList.remove('active');
+  if(e.target===mdModal)mdModal.classList.remove('active');
+  if(e.target===cartModal)cartModal.classList.remove('active');
+}
+prevProject.onclick=()=>{currentIndex=(currentIndex-1+projects.length)%projects.length;openModal(currentIndex);}
+nextProject.onclick=()=>{currentIndex=(currentIndex+1)%projects.length;openModal(currentIndex);}
+
+// Markdown Loader
+function openMarkdown(file){
+  fetch(file)
+    .then(res=>res.text())
+    .then(md=>{
+      document.getElementById('mdContent').innerHTML=marked.parse(md);
+      mdModal.classList.add('active');
+    })
+    .catch(()=>{document.getElementById('mdContent').innerHTML="<p style='color:#f66'>Failed to load description.</p>";mdModal.classList.add('active');});
+}
+mdClose.onclick=()=>mdModal.classList.remove('active');
+
+// Cart
+function addToCart(p){
+  const item=cart.find(x=>x.name===p.name);
+  if(item)item.qty+=1;else cart.push({...p,qty:1});
+  updateCart();
+}
+function updateCart(){
+  cartItems.innerHTML="";
+  let total=0;
+  cart.forEach((p,i)=>{
+    total+=p.price*p.qty;
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`${p.name} x${p.qty} - $${p.price*p.qty} <button onclick="removeItem(${i})">✕</button>`;
+    cartItems.appendChild(div);
+  });
+  cartTotal.textContent=`Total: $${total}`;
+}
+function removeItem(i){cart.splice(i,1);updateCart();}
+cartBtn.onclick=()=>cartModal.classList.add('active');
+cartClose.onclick=()=>cartModal.classList.remove('active');
+checkoutBtn.onclick=()=>{
+  if(cart.length===0){alert("Your cart is empty!");return;}
+  let receipt="🧾 Hyperion-java Purchase Receipt\n\n";
+  let total=0;
+  cart.forEach(p=>{total+=p.price*p.qty;receipt+=`${p.name} x${p.qty} = $${p.price*p.qty}\n`;});
+  receipt+=`\nTotal: $${total}\n\nSend this receipt to:\nDiscord: night_hyperion\nEmail: nighthyperion217@gmail.com`;
+  navigator.clipboard.writeText(receipt);
+  alert("Receipt copied to clipboard! Send it via Discord or Email to complete your order.\n\nDiscord: night_hyperion\nEmail: nighthyperion217@gmail.com");
+};
+</script>
 </body>
 </html>
