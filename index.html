@@ -6,72 +6,111 @@
 <title>Hyperion-java Portfolio & Shop</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Reset & Body */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#0d0d0d;color:#e0e0e0;scroll-behavior:smooth;line-height:1.5;}
+body{background:#0d0d0d;color:#e0e0e0;scroll-behavior:smooth;line-height:1.5;overflow-x:hidden;}
 a{text-decoration:none;color:#ff073a;}
-button{cursor:pointer;outline:none;}
+button{cursor:pointer;outline:none;transition:all 0.3s ease;}
+
+/* Loading Screen */
+#loadingScreen{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:#0d0d0d;display:flex;justify-content:center;
+  align-items:center;flex-direction:column;z-index:20000;overflow:hidden;
+}
+#loadingCanvas{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+}
+.loading-text{
+  position:relative; z-index:10; text-align:center;
+}
+.loading-text span{
+  display:block; font-size:2rem; color:#ff073a; font-weight:700;
+  letter-spacing:3px; margin:5px 0; opacity:0;
+  transform:translateX(-100%);
+  animation:slideIn 1s forwards;
+}
+.loading-text span:nth-child(2){animation-delay:0.5s;}
+@keyframes slideIn{
+  0%{opacity:0; transform:translateX(-100%);}
+  100%{opacity:1; transform:translateX(0);}
+}
 
 /* Header */
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;position:sticky;top:0;background:#111;z-index:1000;flex-wrap:wrap;border-bottom:1px solid #222;}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;position:sticky;top:0;background:#111;z-index:1000;flex-wrap:wrap;border-bottom:1px solid #222;backdrop-filter:blur(5px);}
 header h1{color:#ff073a;font-weight:700;font-size:1.8rem;}
 nav ul{display:flex;gap:25px;flex-wrap:wrap;list-style:none;}
 nav a{color:#e0e0e0;font-weight:500;transition:.3s;}
 nav a:hover,nav a.active{color:#ff073a;}
 
 /* Hero */
-.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:70vh;background:linear-gradient(135deg,#111,#1a1a1a);padding:0 20px;}
-.hero h2{font-size:2.8rem;color:#ff073a;margin-bottom:15px;}
-.hero p{font-size:1.2rem;max-width:600px;color:#ccc;margin-bottom:30px;}
-.hero button{padding:14px 30px;background:#ff073a;border:none;border-radius:6px;color:#fff;font-weight:600;transition:.3s;}
-.hero button:hover{background:#e60033;}
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:70vh;background:linear-gradient(135deg,#111,#1a1a1a);padding:0 20px;transition:all .5s;}
+.hero h2{font-size:2.8rem;color:#ff073a;margin-bottom:15px;text-shadow:0 0 10px #ff073a;opacity:0;transform:translateY(20px);animation:heroFadeIn 1s forwards;}
+.hero p{font-size:1.2rem;max-width:600px;color:#ccc;margin-bottom:30px;opacity:0;transform:translateY(20px);animation:heroFadeIn 1s 0.3s forwards;}
+.hero button{padding:14px 30px;background:#ff073a;border:none;border-radius:8px;color:#fff;font-weight:600;box-shadow:0 6px 20px rgba(255,7,58,.5);transition:all .3s;opacity:0;transform:translateY(20px);animation:heroFadeIn 1s 0.6s forwards;}
+@keyframes heroFadeIn{to{opacity:1;transform:translateY(0);}}
 
 /* Filter */
 .filter-buttons{display:flex;justify-content:center;gap:12px;margin-bottom:40px;flex-wrap:wrap;}
-.filter-buttons button{padding:10px 20px;border:none;border-radius:6px;background:#222;color:#fff;font-weight:600;transition:.3s;}
-.filter-buttons button:hover,.filter-buttons button.active{background:#ff073a;}
+.filter-buttons button{padding:10px 20px;border:none;border-radius:8px;background:#222;color:#fff;font-weight:600;box-shadow:0 4px 15px rgba(0,0,0,.5);transition:all .3s;}
+.filter-buttons button:hover,.filter-buttons button.active{background:#ff073a;transform:scale(1.05);box-shadow:0 6px 20px rgba(255,7,58,.6);}
 
 /* Projects */
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-bottom:60px;padding:0 20px;}
-.project-card{background:#1a1a1a;border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer;display:flex;flex-direction:column;}
-.project-card:hover{transform:translateY(-8px);box-shadow:0 12px 30px rgba(0,0,0,.6);}
-.project-card img{width:100%;height:180px;object-fit:cover;}
+.project-card{background:#1a1a1a;border-radius:14px;overflow:hidden;transition:transform .4s,box-shadow .4s;cursor:pointer;display:flex;flex-direction:column;box-shadow:0 6px 20px rgba(0,0,0,.4);}
+.project-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 16px 40px rgba(0,0,0,.6);}
+.project-card img{width:100%;height:180px;object-fit:cover;transition:all .3s;}
+.project-card img:hover{transform:scale(1.05);}
 .project-card-content{padding:15px;display:flex;flex-direction:column;flex-grow:1;}
-.project-card h3{color:#ff073a;margin-bottom:10px;font-size:1.2rem;}
+.project-card h3{color:#ff073a;margin-bottom:10px;font-size:1.2rem;text-shadow:0 0 6px #ff073a;}
 .project-card p{color:#ccc;font-size:.95rem;flex-grow:1;margin-bottom:10px;}
-.project-card button{background:#ff073a;color:#fff;border:none;padding:10px;border-radius:6px;font-weight:600;transition:.3s;}
-.project-card button:hover{background:#e60033;}
+.project-card button{background:#ff073a;color:#fff;border:none;padding:10px;border-radius:8px;font-weight:600;box-shadow:0 4px 15px rgba(255,7,58,.4);transition:all .3s;}
+.project-card button:hover{background:#e60033;transform:scale(1.05);box-shadow:0 6px 20px rgba(255,7,58,.6);}
 
 /* Modals */
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:10000;padding:10px;}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.9);justify-content:center;align-items:center;z-index:10000;padding:10px;overflow-y:auto;transition:opacity .3s;}
 .modal.active{display:flex;animation:fadeIn .4s ease-in-out;}
-.modal-content{background:#1a1a1a;border-radius:12px;max-width:700px;width:100%;padding:20px;text-align:center;overflow-y:auto;max-height:90vh;position:relative;}
-.modal-content img{width:100%;border-radius:12px;margin-bottom:15px;}
+.modal-content{background:#1a1a1a;border-radius:14px;max-width:700px;width:100%;padding:20px;text-align:center;overflow-y:auto;max-height:90vh;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.7);}
+.modal-content img{width:100%;border-radius:12px;margin-bottom:15px;transition:all .3s;}
+.modal-content img:hover{transform:scale(1.02);}
 .modal-content h2{color:#ff073a;font-size:1.6rem;margin-bottom:15px;}
 .modal-content p{color:#ccc;margin-bottom:20px;}
-.modal-content button{background:#ff073a;color:#fff;border:none;padding:10px 20px;border-radius:6px;font-weight:600;margin:5px;transition:.3s;}
-.modal-content button:hover{background:#e60033;}
-.modal-close{position:absolute;top:10px;right:10px;background:#ff073a;color:#fff;border:none;border-radius:50%;width:35px;height:35px;font-weight:700;cursor:pointer;}
-.modal-close:hover{background:#e60033;}
+.modal-content button{background:#ff073a;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:600;margin:5px;box-shadow:0 4px 15px rgba(255,7,58,.5);}
+.modal-content button:hover{background:#e60033;transform:scale(1.05);box-shadow:0 6px 20px rgba(255,7,58,.7);}
+.modal-close{position:absolute;top:10px;right:10px;background:#ff073a;color:#fff;border:none;border-radius:50%;width:35px;height:35px;font-weight:700;cursor:pointer;box-shadow:0 4px 15px rgba(255,7,58,.5);}
+.modal-close:hover{background:#e60033;transform:scale(1.1);box-shadow:0 6px 20px rgba(255,7,58,.7);}
 
 /* Cart Button */
-.cart-btn{position:fixed;bottom:25px;right:25px;background:#ff073a;border:none;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;justify-content:center;align-items:center;font-size:1.5rem;box-shadow:0 6px 25px rgba(0,0,0,.5);z-index:999;transition:.3s;}
-.cart-btn:hover{background:#e60033;transform:scale(1.05);}
+.cart-btn{position:fixed;bottom:25px;right:25px;background:#ff073a;border:none;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;justify-content:center;align-items:center;font-size:1.5rem;box-shadow:0 8px 30px rgba(0,0,0,.6);z-index:999;transition:.3s;}
+.cart-btn:hover{background:#e60033;transform:scale(1.1);}
 
 /* Cart Modal */
-.cart-box{background:#1a1a1a;border-radius:12px;max-width:500px;width:95%;padding:20px;position:relative;}
+.cart-box{background:#1a1a1a;border-radius:14px;max-width:500px;width:95%;padding:20px;position:relative;box-shadow:0 8px 30px rgba(0,0,0,.7);}
 .cart-box h3{color:#ff073a;text-align:center;margin-bottom:15px;}
 .cart-item{display:flex;justify-content:space-between;font-size:.95rem;color:#ccc;padding:8px 0;border-bottom:1px solid #333;}
 .cart-item button{background:#e60033;color:#fff;border:none;border-radius:4px;padding:2px 6px;font-size:.8rem;}
 .cart-total{font-weight:600;margin-top:10px;text-align:right;}
 .cart-actions{display:flex;justify-content:space-between;align-items:center;margin-top:15px;flex-wrap:wrap;gap:10px;}
-.cart-actions button{background:#ff073a;border:none;border-radius:6px;color:#fff;padding:10px 15px;font-weight:600;transition:.3s;}
-.cart-actions button:hover{background:#e60033;}
+.cart-actions button{background:#ff073a;border:none;border-radius:8px;color:#fff;padding:10px 15px;font-weight:600;box-shadow:0 4px 15px rgba(255,7,58,.5);}
+.cart-actions button:hover{background:#e60033;transform:scale(1.05);box-shadow:0 6px 20px rgba(255,7,58,.7);}
 
+/* Animations */
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-@media(max-width:768px){.hero h2{font-size:2rem;}.projects-grid{grid-template-columns:1fr;}}
+@media(max-width:1024px){.hero h2{font-size:2.5rem;}.projects-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){header{padding:15px 20px;}.hero h2{font-size:2rem;}.hero p{font-size:1rem;}.project-card img{height:160px;}}
+@media(max-width:480px){.hero h2{font-size:1.7rem;}.hero p{font-size:.9rem;}.filter-buttons button{padding:8px 15px;}}
 </style>
 </head>
 <body>
+
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <canvas id="loadingCanvas"></canvas>
+  <div class="loading-text">
+    <span>Hyperion-java</span>
+    <span>Loading Premium Assets...</span>
+  </div>
+</div>
 
 <header>
   <h1>Hyperion-java</h1>
@@ -97,6 +136,7 @@ nav a:hover,nav a.active{color:#ff073a;}
     <button data-filter="Plugins">Plugins</button>
     <button data-filter="Worlds">Worlds</button>
     <button data-filter="YMLs">YMLs</button>
+    <button data-filter="Licenses">Licenses</button>
     <button data-filter="Services">Services</button>
   </div>
   <div class="projects-grid" id="projectsGrid"></div>
@@ -149,127 +189,227 @@ nav a:hover,nav a.active{color:#ff073a;}
   </div>
 </section>
 
-<footer>
-  <p>&copy; 2025 Hyperion-java</p>
-</footer>
+<footer style="text-align:center;color:#ccc;padding:15px 0;">&copy; 2025 Hyperion-java</footer>
 
-<!-- marked.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
 <script>
+// ========================== LOADING SCREEN & PARTICLES ==========================
+const loadingScreen = document.getElementById('loadingScreen');
+
+// Particle canvas
+const canvas = document.createElement('canvas');
+canvas.style.position = 'absolute';
+canvas.style.top = 0;
+canvas.style.left = 0;
+canvas.style.width = '100%';
+canvas.style.height = '100%';
+canvas.style.zIndex = '19999';
+loadingScreen.appendChild(canvas);
+
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function createParticles(count = 100) {
+    particles = [];
+    for (let i = 0; i < count; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speedX: (Math.random() - 0.5) * 1.5,
+            speedY: (Math.random() - 0.5) * 1.5,
+            color: `rgba(255,7,58,${Math.random()})`
+        });
+    }
+}
+createParticles(120);
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// Remove loader after page load
+window.addEventListener('load', () => {
+    loadingScreen.style.opacity = '0';
+    setTimeout(() => loadingScreen.style.display = 'none', 600);
+});
+
+// ========================== PROJECTS DATA ==========================
 const projects = [
-  {name:"ItemX",category:"Plugins",description:"itemx.md",image:"ItemX.png",price:5},
-  {name:"Adventure World",category:"Worlds",description:"adventureworld.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=World",price:60},
-  {name:"Config Pack",category:"YMLs",description:"configpack.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=YML",price:20},
-  {name:"Server Setup",category:"Services",description:"serversetup.md",image:"https://placehold.co/400x250/ff073a/ffffff?text=Service",price:100}
+    { name: "ItemX", category: "Plugins", description: "itemx.md", image: "ItemX.png", price: 5 },
+    { name: "ItemX YML Pack 160+", category: "YMLs", description: "itemxpluginitems.md", image: "itemxpluginitems.png", price: 10 },
+    { name: "AnthraxRPG World", category: "Worlds", description: "anthraxworld.md", image: "anthraxworld.png", price: 15 },
+    { name: "ItemX Config Pack License", category: "Licenses", description: "itemxconfiglicense.md", image: "itemxconfiglicense.png", price: 7.5 },
+    { name: "Discord Bot Creation", category: "Services", description: "discordbotcreation.md", image: "discordbotcreation.png", price: 5 },
+    { name: "Business Package", category: "Services", description: "businesspackage.md", image: "businesspackage.png", price: 35 },
+    { name: "ItemX License", category: "Licenses", description: "itemxlicense.md", image: "itemxlicense.png", price: 5 }
 ];
 
-const projectsGrid=document.getElementById('projectsGrid');
-const modal=document.getElementById('projectModal');
-const modalTitle=document.getElementById('modalTitle');
-const modalDesc=document.getElementById('modalDesc');
-const modalImage=document.getElementById('modalImage');
-const modalBuy=document.getElementById('modalBuy');
-const modalClose=document.getElementById('modalClose');
-const prevProject=document.getElementById('prevProject');
-const nextProject=document.getElementById('nextProject');
-const mdModal=document.getElementById('mdModal');
-const mdClose=document.getElementById('mdClose');
-const cartModal=document.getElementById('cartModal');
-const cartBtn=document.getElementById('cartBtn');
-const cartClose=document.getElementById('cartClose');
-const cartItems=document.getElementById('cartItems');
-const cartTotal=document.getElementById('cartTotal');
-const checkoutBtn=document.getElementById('checkoutBtn');
+// ========================== DOM ELEMENTS ==========================
+const projectsGrid = document.getElementById('projectsGrid');
+const modal = document.getElementById('projectModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalImage = document.getElementById('modalImage');
+const modalBuy = document.getElementById('modalBuy');
+const modalClose = document.getElementById('modalClose');
+const prevProject = document.getElementById('prevProject');
+const nextProject = document.getElementById('nextProject');
 
-let cart=[],currentIndex=0;
+const mdModal = document.getElementById('mdModal');
+const mdClose = document.getElementById('mdClose');
+const mdContent = document.getElementById('mdContent');
 
-function renderProjects(filter="all"){
-  projectsGrid.innerHTML="";
-  projects.filter(p=>filter==="all"||p.category===filter)
-  .forEach((p,index)=>{
-    const card=document.createElement('div');
-    card.className='project-card';
-    card.innerHTML=`
-      <img src="${p.image}" alt="${p.name}">
-      <div class="project-card-content">
-        <h3>${p.name}</h3>
-        <p><a href="#" onclick="openMarkdown('${p.description}');return false;">Read Description</a></p>
-        <button onclick="openModal(${index})">View Project</button>
-      </div>`;
-    projectsGrid.appendChild(card);
-  });
+const cartModal = document.getElementById('cartModal');
+const cartBtn = document.getElementById('cartBtn');
+const cartClose = document.getElementById('cartClose');
+const cartItems = document.getElementById('cartItems');
+const cartTotal = document.getElementById('cartTotal');
+const checkoutBtn = document.getElementById('checkoutBtn');
+
+let cart = [];
+let currentIndex = 0;
+
+// ========================== RENDER PROJECTS ==========================
+function renderProjects(filter = "all") {
+    projectsGrid.innerHTML = "";
+    projects.filter(p => filter === "all" || p.category === filter).forEach((p, index) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `
+            <img src="${p.image}" alt="${p.name}">
+            <div class="project-card-content">
+                <h3>${p.name}</h3>
+                <p><a href="#" onclick="openMarkdown('${p.description}');return false;">Read Description</a></p>
+                <button onclick="openModal(${index})">View Project</button>
+            </div>
+        `;
+        projectsGrid.appendChild(card);
+    });
 }
 renderProjects();
 
-document.querySelectorAll('.filter-buttons button').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.filter-buttons button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    renderProjects(btn.dataset.filter);
-  });
+// ========================== FILTER BUTTONS ==========================
+document.querySelectorAll('.filter-buttons button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-buttons button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProjects(btn.dataset.filter);
+    });
 });
 
-function openModal(i){
-  currentIndex=i;
-  const p=projects[i];
-  modalTitle.textContent=p.name;
-  modalDesc.textContent=`Price: $${p.price}`;
-  modalImage.src=p.image;
-  modalBuy.onclick=()=>addToCart(p);
-  modal.classList.add('active');
+// ========================== PROJECT MODAL ==========================
+function openModal(i) {
+    currentIndex = i;
+    const p = projects[i];
+    modalTitle.textContent = p.name;
+    modalDesc.textContent = `Price: $${p.price.toFixed(2)}`;
+    modalImage.src = p.image;
+    modalBuy.onclick = () => addToCart(p);
+    modal.classList.add('active');
 }
-modalClose.onclick=()=>modal.classList.remove('active');
-window.onclick=e=>{
-  if(e.target===modal)modal.classList.remove('active');
-  if(e.target===mdModal)mdModal.classList.remove('active');
-  if(e.target===cartModal)cartModal.classList.remove('active');
-}
-prevProject.onclick=()=>{currentIndex=(currentIndex-1+projects.length)%projects.length;openModal(currentIndex);}
-nextProject.onclick=()=>{currentIndex=(currentIndex+1)%projects.length;openModal(currentIndex);}
+modalClose.onclick = () => modal.classList.remove('active');
 
-// Markdown Loader
-function openMarkdown(file){
-  fetch(file)
-    .then(res=>res.text())
-    .then(md=>{
-      document.getElementById('mdContent').innerHTML=marked.parse(md);
-      mdModal.classList.add('active');
-    })
-    .catch(()=>{document.getElementById('mdContent').innerHTML="<p style='color:#f66'>Failed to load description.</p>";mdModal.classList.add('active');});
-}
-mdClose.onclick=()=>mdModal.classList.remove('active');
-
-// Cart
-function addToCart(p){
-  const item=cart.find(x=>x.name===p.name);
-  if(item)item.qty+=1;else cart.push({...p,qty:1});
-  updateCart();
-}
-function updateCart(){
-  cartItems.innerHTML="";
-  let total=0;
-  cart.forEach((p,i)=>{
-    total+=p.price*p.qty;
-    const div=document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML=`${p.name} x${p.qty} - $${p.price*p.qty} <button onclick="removeItem(${i})">✕</button>`;
-    cartItems.appendChild(div);
-  });
-  cartTotal.textContent=`Total: $${total}`;
-}
-function removeItem(i){cart.splice(i,1);updateCart();}
-cartBtn.onclick=()=>cartModal.classList.add('active');
-cartClose.onclick=()=>cartModal.classList.remove('active');
-checkoutBtn.onclick=()=>{
-  if(cart.length===0){alert("Your cart is empty!");return;}
-  let receipt="🧾 Hyperion-java Purchase Receipt\n\n";
-  let total=0;
-  cart.forEach(p=>{total+=p.price*p.qty;receipt+=`${p.name} x${p.qty} = $${p.price*p.qty}\n`;});
-  receipt+=`\nTotal: $${total}\n\nSend this receipt to:\nDiscord: night_hyperion\nEmail: nighthyperion217@gmail.com`;
-  navigator.clipboard.writeText(receipt);
-  alert("Receipt copied to clipboard! Send it via Discord or Email to complete your order.\n\nDiscord: night_hyperion\nEmail: nighthyperion217@gmail.com");
+prevProject.onclick = () => {
+    currentIndex = (currentIndex - 1 + projects.length) % projects.length;
+    openModal(currentIndex);
 };
+nextProject.onclick = () => {
+    currentIndex = (currentIndex + 1) % projects.length;
+    openModal(currentIndex);
+};
+
+// ========================== MARKDOWN VIEWER ==========================
+function openMarkdown(file) {
+    fetch(file)
+        .then(res => res.text())
+        .then(md => {
+            mdContent.innerHTML = marked.parse(md);
+            mdModal.classList.add('active');
+        })
+        .catch(() => {
+            mdContent.innerHTML = "<p style='color:#f66'>Failed to load description.</p>";
+            mdModal.classList.add('active');
+        });
+}
+mdClose.onclick = () => mdModal.classList.remove('active');
+
+// ========================== CART ==========================
+function addToCart(p) {
+    const item = cart.find(x => x.name === p.name);
+    if (item) item.qty += 1;
+    else cart.push({ ...p, qty: 1 });
+    updateCart();
+}
+
+function updateCart() {
+    cartItems.innerHTML = "";
+    let total = 0;
+    cart.forEach((p, i) => {
+        total += p.price * p.qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `${p.name} x${p.qty} - $${(p.price * p.qty).toFixed(2)} <button onclick="removeItem(${i})">✕</button>`;
+        cartItems.appendChild(div);
+    });
+    cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+function removeItem(i) {
+    cart.splice(i, 1);
+    updateCart();
+}
+
+// ========================== CART MODAL ==========================
+cartBtn.onclick = () => cartModal.classList.add('active');
+cartClose.onclick = () => cartModal.classList.remove('active');
+
+// ========================== CHECKOUT ==========================
+checkoutBtn.onclick = () => {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+    let receipt = "🧾 Hyperion-java Purchase Receipt\n\n";
+    let total = 0;
+    cart.forEach(p => {
+        total += p.price * p.qty;
+        receipt += `${p.name} x${p.qty} = $${(p.price * p.qty).toFixed(2)}\n`;
+    });
+    receipt += `\nTotal: $${total.toFixed(2)}\n\nSend this receipt to:\nDiscord: night_hyperion\nEmail: nighthyperion217@gmail.com`;
+    navigator.clipboard.writeText(receipt);
+    alert("Receipt copied to clipboard! Send it via Discord or Email to complete your order.\n\nDiscord: night_hyperion\nEmail: nighthyperion217@gmail.com");
+};
+
+// ========================== CLOSE MODALS ON OUTSIDE CLICK ==========================
+window.onclick = e => {
+    if (e.target === modal) modal.classList.remove('active');
+    if (e.target === mdModal) mdModal.classList.remove('active');
+    if (e.target === cartModal) cartModal.classList.remove('active');
+};
+
 </script>
 </body>
 </html>
+
