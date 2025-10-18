@@ -5,7 +5,7 @@ Welcome to my Portfolio! This repository showcases my work, projects, and skills
 ## Live Portfolio
 
 You can view the live version of my portfolio here:  
-[My Portfolio](https://hyperion-java.github.io/Portfolio/)
+[My Portfolio](https://hyperion-java.github.io/Shop/)
 
 ## About This Portfolio
 
