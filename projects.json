@@ -1,1 +1,17 @@
-
+[
+  {
+    "name": "Minecraft PvP Plugin",
+    "thumbnail": "images/pvp-plugin.png",
+    "description": "Custom Java plugin with emerald-based economy, kill tracking, and PvP mechanics."
+  },
+  {
+    "name": "Web Portfolio",
+    "thumbnail": "images/portfolio.png",
+    "description": "Responsive blue-themed portfolio built with HTML, CSS, and JavaScript."
+  },
+  {
+    "name": "Python Automation Tool",
+    "thumbnail": "images/python-tool.png",
+    "description": "Automation scripts for data processing and system tasks using Python."
+  }
+]
