@@ -1,17 +1,32 @@
 [
   {
-    "name": "Minecraft PvP Plugin",
-    "thumbnail": "images/pvp-plugin.png",
-    "description": "Custom Java plugin with emerald-based economy, kill tracking, and PvP mechanics."
+    "name": "ElysiumPit",
+    "thumbnail": "images/elysiumpit.png",
+    "description": "A high-intensity pit gamemode for the Elysium Network featuring custom items, unique currency, bespoke armor sets, and engaging PvP mechanics. Designed for competitive gameplay and leaderboards."
   },
   {
-    "name": "Web Portfolio",
-    "thumbnail": "images/portfolio.png",
-    "description": "Responsive blue-themed portfolio built with HTML, CSS, and JavaScript."
+    "name": "ItemX",
+    "thumbnail": "images/itemx.png",
+    "description": "A versatile item creation plugin with over 160+ fully customizable items, each with unique lore, names, and effects. Designed to enhance creativity and expand server gameplay possibilities."
   },
   {
-    "name": "Python Automation Tool",
-    "thumbnail": "images/python-tool.png",
-    "description": "Automation scripts for data processing and system tasks using Python."
+    "name": "Leorion",
+    "thumbnail": "images/leorion.png",
+    "description": "A fully custom MMORPG plugin including unique armor sets, mechanics, items, mobs, quests, and much more. Built to deliver a rich, immersive RPG experience within Minecraft."
+  },
+  {
+    "name": "LeorionLogin",
+    "thumbnail": "images/leorionlogin.png",
+    "description": "A secure, custom login plugin for Leorion servers, ensuring reliable authentication, account management, and enhanced security for players."
+  },
+  {
+    "name": "LeagueMC",
+    "thumbnail": "images/leaguemc.png",
+    "description": "An experimental MMORPG server with over 300+ active members, featuring custom armor, items, mobs, and advanced RPG mechanics. Designed as a proof-of-concept for large-scale MMORPG integration."
+  },
+  {
+    "name": "AnthraxRPG",
+    "thumbnail": "images/anthraxrpg.png",
+    "description": "A cutting-edge custom MMORPG server incorporating unique mechanics, immersive quests, and a rich progression system to deliver an engaging gameplay experience."
   }
 ]
