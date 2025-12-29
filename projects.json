@@ -25,6 +25,11 @@
     "description": "An experimental MMORPG server with over 300+ active members, featuring custom armor, items, mobs, and advanced RPG mechanics. Designed as a proof-of-concept for large-scale MMORPG integration."
   },
   {
+    "name": "TridentXMace",
+    "thumbnail": "images/tridentxmace.png",
+    "description": "A custom plugin adding a unique trident with wind-based abilities, crafting rituals that grant unstable tridents with random effects, and other exciting features."
+  },
+  {
     "name": "AnthraxRPG",
     "thumbnail": "images/anthraxrpg.png",
     "description": "A cutting-edge custom MMORPG server incorporating unique mechanics, immersive quests, and a rich progression system to deliver an engaging gameplay experience."
