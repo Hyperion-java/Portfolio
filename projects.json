@@ -25,6 +25,11 @@
     "description": "A plugin which using commands you can give all players or specific players random skins and usernames."
   },
   {
+    "name": "ObfuscatedPlayer",
+    "thumbnail": "images/obfuscatedplayer.png",
+    "description": "A plugin where when a player goes invisible their name is assigned random characters which also works with other plugin's GUI."
+  },
+  {
     "name": "LeagueMC",
     "thumbnail": "images/leaguemc.png",
     "description": "An experimental MMORPG server with over 300+ active members, featuring custom armor, items, mobs, and advanced RPG mechanics. Designed as a proof-of-concept for large-scale MMORPG integration."
