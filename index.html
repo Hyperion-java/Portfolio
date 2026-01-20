@@ -1,1 +1,346 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Hyperion — Software Developer</title><meta name="viewport" content="width=device-width,initial-scale=1"><style>:root{--b:#070b1a;--p:rgba(14,20,46,.88);--bl:#4f9cff;--bs:#7ab4ff;--t:#eef2ff;--m:#b6c2e2;--bd:rgba(79,156,255,.25);--g:rgba(79,156,255,.65)}*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif}body{background:radial-gradient(circle at 15% 10%,#1e3a8a55,transparent 45%),radial-gradient(circle at 85% 30%,#2563eb55,transparent 45%),var(--b);color:var(--t);overflow-x:hidden}h1,h2,h3,h4,p,span,a{text-shadow:0 0 12px rgba(79,156,255,.25)}#loader{position:fixed;inset:0;background:var(--b);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999}.loader-line{width:220px;height:3px;background:#020617}.loader-line span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--bl),var(--bs));animation:l 1.6s ease forwards;box-shadow:0 0 30px var(--g)}@keyframes l{to{width:100%}}#loader p{margin-top:20px;letter-spacing:4px;font-size:.75rem;color:var(--bs)}nav{position:fixed;top:0;width:100%;background:rgba(7,11,26,.65);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd);z-index:1000}.nav-inner{max-width:1200px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between}.logo{color:var(--bs);font-weight:800;letter-spacing:2px}header{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:140px 20px 40px}.hero{max-width:900px;text-align:center}.hero h1,.hero p,.skills span{opacity:0;transform:translateY(20px)}.hero.show h1{animation:f .8s ease forwards}.hero.show p{animation:f .8s ease forwards .25s}.hero.show .skills span{animation:f .6s ease forwards}.hero.show .skills span:nth-child(n){animation-delay:calc(.15s * var(--i))}@keyframes f{to{opacity:1;transform:translateY(0)}}.hero h1{font-size:clamp(3.2rem,6vw,5.2rem);background:linear-gradient(90deg,var(--bs),var(--bl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 60px var(--g)}.hero p{margin:24px auto;max-width:720px;font-size:1.15rem;color:var(--m)}.skills{margin-top:40px}.skills span{display:inline-block;margin:8px;padding:12px 26px;border-radius:40px;background:rgba(79,156,255,.14);border:1px solid var(--bd);color:var(--bs);box-shadow:inset 0 0 12px rgba(79,156,255,.2)}section{max-width:1200px;margin:auto;padding:100px 20px}section h2{font-size:2.4rem;color:var(--bs);text-align:center;margin-bottom:60px}.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:36px}.exp{background:var(--p);border-radius:22px;padding:32px;border:1px solid var(--bd);opacity:0;transform:translateY(30px)}.exp.show{opacity:1;transform:translateY(0);transition:.8s ease}.exp h3{color:var(--bs);margin-bottom:14px}.exp p{color:var(--m);line-height:1.6}.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:36px}.project{background:var(--p);border-radius:26px;overflow:hidden;border:1px solid var(--bd);opacity:0;transform:translateY(40px)}.project.show{opacity:1;transform:translateY(0);transition:1s ease}.project img{width:100%;height:210px;object-fit:cover}.project-content{padding:30px}.project h4{color:var(--bs);margin-bottom:12px}.project p{color:var(--m)}footer{text-align:center;padding:40px;color:var(--m);border-top:1px solid var(--bd)}</style></head><body><div id="loader"><div class="loader-line"><span></span></div><p>INITIALIZING</p></div><nav><div class="nav-inner"><div class="logo">HYPERION</div></div></nav><header><div class="hero" id="hero"><h1>Hyperion</h1><p>Software Developer with 3+ years of experience crafting high-performance systems using Java, HTML, CSS, JavaScript, and Python.</p><div class="skills"><span style="--i:1">Java</span><span style="--i:2">HTML</span><span style="--i:3">CSS</span><span style="--i:4">JavaScript</span><span style="--i:5">Python</span></div></div></header><section><h2>Experience</h2><div class="exp-grid"><div class="exp"><h3>Software Developer</h3><p>Designed scalable systems, APIs, and tools with a focus on performance and maintainability.</p></div><div class="exp"><h3>Full-Stack Engineering</h3><p>Built responsive UIs and efficient backends, integrating databases, authentication, and APIs.</p></div><div class="exp"><h3>Java Systems & Plugins</h3><p>Developed custom Java applications and plugins with optimized logic and clean architecture.</p></div><div class="exp"><h3>Web Performance & UX</h3><p>Focused on animation timing, responsiveness, and UI polish for premium user experiences.</p></div></div></section><section><h2>Projects</h2><div class="projects" id="projectsGrid"></div></section><footer>© 2025 Hyperion • Engineered with precision</footer><script>!function(){var d=window;d.addEventListener("load",function(){setTimeout(function(){document.getElementById("loader").style.display="none",document.getElementById("hero").classList.add("show")},1700)}),fetch("projects.json").then(function(r){return r.json()}).then(function(t){var g=document.getElementById("projectsGrid");t.forEach(function(p){var c=document.createElement("div");c.className="project",c.innerHTML='<img src="'+p.thumbnail+'"><div class="project-content"><h4>'+p.name+"</h4><p>"+p.description+"</p></div>",g.appendChild(c)}),s(".project")});function s(e){var o=new IntersectionObserver(function(n){n.forEach(function(i){i.isIntersecting&&i.target.classList.add("show")})},{threshold:.25});document.querySelectorAll(e).forEach(function(l){o.observe(l)})}s(".exp")}();</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>hyperion-java</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --bg:#050505;
+  --fg:#fff;
+  --muted:#9aa0a6;
+  --glass:rgba(255,255,255,.07);
+  --stroke:rgba(255,255,255,.14);
+  --blue:#5da9ff;
+  --shadow-lg:0 40px 120px rgba(0,0,0,.9);
+  --shadow-md:0 20px 60px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{min-height:300vh;overflow-x:hidden}
+
+/* vignette + ambient glow */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(93,169,255,.06),transparent 40%),
+    radial-gradient(circle at center,transparent 30%,#000 80%);
+  pointer-events:none;
+  z-index:0;
+}
+
+#app{position:relative;z-index:1}
+
+/* ================= HERO ================= */
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+.hero-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+
+/* avatar */
+.avatar{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  background:url("pfp.png") center/cover no-repeat;
+  box-shadow:
+    0 0 0 1px var(--stroke),
+    0 40px 120px rgba(0,0,0,.9);
+  animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+  50%{transform:translateY(-6px)}
+}
+
+h1{
+  font-size:46px;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+
+.subtitle{
+  max-width:560px;
+  font-size:15px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+/* socials */
+.actions{
+  display:flex;
+  gap:12px;
+}
+
+.social{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 18px;
+  border-radius:999px;
+  background:var(--glass);
+  border:1px solid var(--stroke);
+  color:#fff;
+  font-size:13px;
+  text-decoration:none;
+  box-shadow:var(--shadow-md);
+  transition:transform .4s ease,box-shadow .4s ease,background .4s;
+}
+
+.social:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:var(--shadow-lg);
+  background:rgba(255,255,255,.12);
+}
+
+.social svg{width:16px;height:16px;fill:currentColor}
+
+/* pill */
+.pill{
+  padding:9px 18px;
+  border-radius:999px;
+  font-size:13px;
+  color:var(--blue);
+  background:rgba(93,169,255,.18);
+  border:1px solid rgba(93,169,255,.45);
+  box-shadow:0 0 40px rgba(93,169,255,.25);
+}
+
+/* scroll */
+.scroll{
+  margin-top:22px;
+  font-size:11px;
+  letter-spacing:.35em;
+  color:#666;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  50%{opacity:.4}
+}
+
+/* ================= SECTIONS ================= */
+.section{
+  padding:140px 24px;
+  display:flex;
+  justify-content:center;
+}
+
+.section-inner{
+  max-width:1000px;
+  width:100%;
+}
+
+.section-title{
+  text-align:center;
+  letter-spacing:.4em;
+  font-size:11px;
+  color:#666;
+  margin-bottom:36px;
+}
+
+/* cards */
+.card{
+  background:var(--glass);
+  backdrop-filter:blur(30px);
+  border:1px solid var(--stroke);
+  border-radius:18px;
+  padding:26px;
+  box-shadow:var(--shadow-md);
+  transition:transform .6s ease,box-shadow .6s ease;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-lg);
+}
+
+/* ================= SKILLS ================= */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+}
+
+.skill h3{
+  margin:0 0 10px;
+  font-size:17px;
+}
+
+.skill p{
+  margin:0;
+  font-size:14px;
+  line-height:1.7;
+  color:#ccc;
+}
+
+/* ================= PROJECTS ================= */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:26px;
+}
+
+.project{
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.project img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:14px;
+  transition:transform .8s ease,filter .8s ease;
+}
+
+.project:hover img{
+  transform:scale(1.08);
+  filter:brightness(1.15);
+}
+
+.project h4{
+  margin:0 0 6px;
+  font-size:16px;
+}
+
+.project p{
+  margin:0;
+  font-size:14px;
+  color:#ccc;
+  line-height:1.6;
+}
+
+/* ================= REVEAL ================= */
+[data-reveal]{
+  opacity:0;
+  transform:translateY(24px) scale(.96);
+  transition:
+    opacity 1.2s cubic-bezier(.2,.8,.2,1),
+    transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+[data-reveal].show{
+  opacity:1;
+  transform:none;
+}
+</style>
+</head>
+
+<body>
+<div id="app"></div>
+
+<script>
+class ProfilePage{
+  constructor(root){
+    this.root=root;
+    this.render();
+    this.reveal();
+    this.loadProjects();
+  }
+
+  render(){
+    this.root.innerHTML=`
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="avatar" data-reveal></div>
+          <h1 data-reveal>hyperion-java</h1>
+
+          <div class="subtitle" data-reveal>
+            Software Developer with 3+ years of experience crafting
+            high-performance systems using Java.
+          </div>
+
+          <div class="actions" data-reveal>
+            <a class="social" href="#">${this.discord()} Discord</a>
+            <a class="social" href="#">${this.x()} Twitter</a>
+          </div>
+
+          <div class="pill" data-reveal>Available for hire</div>
+          <div class="scroll" data-reveal>SCROLL</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-title" data-reveal>SKILLS</div>
+          <div class="skills">
+            ${this.skill("Software Developer","Designed scalable systems, APIs, and tools with a focus on performance and maintainability.")}
+            ${this.skill("Full-Stack Engineering","Built responsive UIs and efficient backends, integrating databases, authentication, and APIs.")}
+            ${this.skill("Java Systems & Plugins","Developed custom Java applications and plugins with optimized logic and clean architecture.")}
+            ${this.skill("Web Performance & UX","Focused on animation timing, responsiveness, and UI polish for premium user experiences.")}
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-title" data-reveal>PROJECTS</div>
+          <div class="projects" id="projects"></div>
+        </div>
+      </section>
+    `;
+  }
+
+  skill(title,desc){
+    return `<div class="card skill" data-reveal><h3>${title}</h3><p>${desc}</p></div>`;
+  }
+
+  async loadProjects(){
+    try{
+      const res=await fetch("projects.json");
+      const data=await res.json();
+      const grid=this.root.querySelector("#projects");
+
+      data.forEach((p,i)=>{
+        const el=document.createElement("div");
+        el.className="card project";
+        el.setAttribute("data-reveal","");
+        el.innerHTML=`
+          <img src="${p.thumbnail}" alt="${p.name}">
+          <h4>${p.name}</h4>
+          <p>${p.description}</p>
+        `;
+        grid.appendChild(el);
+      });
+
+      this.reveal();
+    }catch(e){
+      console.error("Failed to load projects.json",e);
+    }
+  }
+
+  reveal(){
+    [...this.root.querySelectorAll("[data-reveal]:not(.show)")].forEach((el,i)=>{
+      setTimeout(()=>el.classList.add("show"),i*120);
+    });
+  }
+
+  discord(){
+    return `<svg viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.8 3l-.2.4a18 18 0 0 1 4.2 2.1"/></svg>`;
+  }
+
+  x(){
+    return `<svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23 22"/></svg>`;
+  }
+}
+
+new ProfilePage(document.getElementById("app"));
+</script>
+</body>
+</html>
