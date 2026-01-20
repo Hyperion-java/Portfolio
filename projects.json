@@ -64,15 +64,15 @@
     "thumbnail": "images/ItemAdderLocker.png",
     "description": "Lets players safely store and manage their ItemAdder cosmetic skins in a dedicated locker system."
   },
-{
+  {
     "name": "UnboundSMP",
     "thumbnail": "images/UnboundSMP.png",
     "description": "A custom SMP plugin introducing playable races combined with a dynamic luck system."
   },
-{
+  {  
     "name": "BreadCore",
     "thumbnail": "images/BreadCore.png",
     "description": "A core SMP plugin built for Bread SMP, packed with multiple essential and expandable gameplay features."
-  },
+  }
 ]
 
