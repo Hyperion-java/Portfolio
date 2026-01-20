@@ -43,5 +43,36 @@
     "name": "AnthraxRPG",
     "thumbnail": "images/anthraxrpg.png",
     "description": "A cutting-edge custom MMORPG server incorporating unique mechanics, immersive quests, and a rich progression system to deliver an engaging gameplay experience."
-  }
+  },
+  {
+    "name": "HoldMyVillager",
+    "thumbnail": "images/HoldMyVillager.png",
+    "description": "A custom plugin that allows players to pick up and carry villagers with ease."
+  },
+  {
+    "name": "GhostSMP",
+    "thumbnail": "images/GhostSMP.png",
+    "description": "An SMP plugin featuring collectible souls that grant unique abilities, inspired by Strength SMP–style mechanics."
+  },
+  {
+    "name": "OniSMP",
+    "thumbnail": "images/OniSMP.png",
+    "description": "A detailed mask-based plugin with multiple variants, each providing powerful and unique abilities."
+  },
+  {
+    "name": "ItemAdderLocker",
+    "thumbnail": "images/ItemAdderLocker.png",
+    "description": "Lets players safely store and manage their ItemAdder cosmetic skins in a dedicated locker system."
+  },
+{
+    "name": "UnboundSMP",
+    "thumbnail": "images/anthraxrpg.png",
+    "description": "A custom SMP plugin introducing playable races combined with a dynamic luck system."
+  },
+{
+    "name": "BreadCore",
+    "thumbnail": "images/BreadCore.png",
+    "description": "A core SMP plugin built for Bread SMP, packed with multiple essential and expandable gameplay features."
+  },
 ]
+
