@@ -18,17 +18,16 @@
 }
 
 *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
-
 html,body{margin:0;background:var(--bg);color:var(--fg)}
-body{min-height:300vh;overflow-x:hidden}
+body{min-height:320vh;overflow-x:hidden}
 
-/* vignette + ambient glow */
+/* ambient vignette */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    radial-gradient(circle at 50% 30%,rgba(93,169,255,.06),transparent 40%),
+    radial-gradient(circle at 50% 30%,rgba(93,169,255,.06),transparent 45%),
     radial-gradient(circle at center,transparent 30%,#000 80%);
   pointer-events:none;
   z-index:0;
@@ -51,117 +50,87 @@ body::before{
   gap:18px;
 }
 
-/* avatar */
 .avatar{
-  width:100px;
-  height:100px;
+  width:104px;
+  height:104px;
   border-radius:50%;
   background:url("pfp.png") center/cover no-repeat;
   box-shadow:
     0 0 0 1px var(--stroke),
-    0 40px 120px rgba(0,0,0,.9);
-  animation:float 6s ease-in-out infinite;
+    0 50px 140px rgba(0,0,0,.95);
+  animation:float 7s ease-in-out infinite;
 }
 
 @keyframes float{
-  50%{transform:translateY(-6px)}
+  50%{transform:translateY(-8px)}
 }
 
 h1{
-  font-size:46px;
+  font-size:48px;
   font-weight:900;
-  letter-spacing:-.02em;
+  letter-spacing:-.025em;
 }
 
 .subtitle{
-  max-width:560px;
+  max-width:580px;
   font-size:15px;
-  line-height:1.7;
+  line-height:1.75;
   color:var(--muted);
 }
 
-/* socials */
-.actions{
-  display:flex;
-  gap:12px;
-}
-
-.social{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:11px 18px;
-  border-radius:999px;
-  background:var(--glass);
-  border:1px solid var(--stroke);
-  color:#fff;
-  font-size:13px;
-  text-decoration:none;
-  box-shadow:var(--shadow-md);
-  transition:transform .4s ease,box-shadow .4s ease,background .4s;
-}
-
-.social:hover{
-  transform:translateY(-4px) scale(1.03);
-  box-shadow:var(--shadow-lg);
-  background:rgba(255,255,255,.12);
-}
-
-.social svg{width:16px;height:16px;fill:currentColor}
-
-/* pill */
-.pill{
-  padding:9px 18px;
-  border-radius:999px;
-  font-size:13px;
+/* contact */
+.contact{
+  margin-top:6px;
+  font-size:14px;
   color:var(--blue);
-  background:rgba(93,169,255,.18);
+  background:rgba(93,169,255,.15);
   border:1px solid rgba(93,169,255,.45);
+  padding:10px 18px;
+  border-radius:999px;
   box-shadow:0 0 40px rgba(93,169,255,.25);
 }
 
 /* scroll */
 .scroll{
-  margin-top:22px;
+  margin-top:26px;
   font-size:11px;
-  letter-spacing:.35em;
+  letter-spacing:.4em;
   color:#666;
-  animation:pulse 2.5s ease-in-out infinite;
+  animation:pulse 2.8s ease-in-out infinite;
 }
 
 @keyframes pulse{
-  50%{opacity:.4}
+  50%{opacity:.35}
 }
 
 /* ================= SECTIONS ================= */
 .section{
-  padding:140px 24px;
+  padding:150px 24px;
   display:flex;
   justify-content:center;
 }
 
 .section-inner{
-  max-width:1000px;
+  max-width:1100px;
   width:100%;
 }
 
 .section-title{
   text-align:center;
-  letter-spacing:.4em;
+  letter-spacing:.45em;
   font-size:11px;
   color:#666;
-  margin-bottom:36px;
+  margin-bottom:40px;
 }
 
-/* cards */
+/* ================= CARDS ================= */
 .card{
   background:var(--glass);
-  backdrop-filter:blur(30px);
+  backdrop-filter:blur(32px);
   border:1px solid var(--stroke);
-  border-radius:18px;
-  padding:26px;
+  border-radius:20px;
   box-shadow:var(--shadow-md);
-  transition:transform .6s ease,box-shadow .6s ease;
+  transition:transform .9s ease,box-shadow .9s ease;
 }
 
 .card:hover{
@@ -173,7 +142,11 @@ h1{
 .skills{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
+  gap:26px;
+}
+
+.skill{
+  padding:28px;
 }
 
 .skill h3{
@@ -188,51 +161,53 @@ h1{
   color:#ccc;
 }
 
-/* ================= PROJECTS ================= */
+/* ================= PROJECTS (HORIZONTAL) ================= */
 .projects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:26px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
 }
 
 .project{
-  overflow:hidden;
-  cursor:pointer;
+  display:flex;
+  gap:26px;
+  padding:28px;
+  align-items:center;
 }
 
 .project img{
-  width:100%;
-  height:180px;
+  width:280px;
+  height:160px;
   object-fit:cover;
-  border-radius:12px;
-  margin-bottom:14px;
-  transition:transform .8s ease,filter .8s ease;
+  border-radius:14px;
+  flex-shrink:0;
+  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  transition:transform 1s ease;
 }
 
 .project:hover img{
-  transform:scale(1.08);
-  filter:brightness(1.15);
+  transform:scale(1.05);
 }
 
 .project h4{
-  margin:0 0 6px;
-  font-size:16px;
+  margin:0 0 8px;
+  font-size:18px;
 }
 
 .project p{
   margin:0;
   font-size:14px;
+  line-height:1.7;
   color:#ccc;
-  line-height:1.6;
 }
 
 /* ================= REVEAL ================= */
 [data-reveal]{
   opacity:0;
-  transform:translateY(24px) scale(.96);
+  transform:translateY(28px) scale(.96);
   transition:
-    opacity 1.2s cubic-bezier(.2,.8,.2,1),
-    transform 1.2s cubic-bezier(.2,.8,.2,1);
+    opacity 1.4s cubic-bezier(.2,.8,.2,1),
+    transform 1.4s cubic-bezier(.2,.8,.2,1);
 }
 
 [data-reveal].show{
@@ -245,13 +220,17 @@ h1{
 <body>
 <div id="app"></div>
 
+<audio id="bgm" src="music.mp3" loop></audio>
+
 <script>
 class ProfilePage{
   constructor(root){
     this.root=root;
+    this.audio=document.getElementById("bgm");
     this.render();
     this.reveal();
     this.loadProjects();
+    this.initMusic();
   }
 
   render(){
@@ -266,12 +245,10 @@ class ProfilePage{
             high-performance systems using Java.
           </div>
 
-          <div class="actions" data-reveal>
-            <a class="social" href="#">${this.discord()} Discord</a>
-            <a class="social" href="#">${this.x()} Twitter</a>
+          <div class="contact" data-reveal>
+            Contact <strong>night_hyperion</strong> on Discord to hire me
           </div>
 
-          <div class="pill" data-reveal>Available for hire</div>
           <div class="scroll" data-reveal>SCROLL</div>
         </div>
       </section>
@@ -302,41 +279,37 @@ class ProfilePage{
   }
 
   async loadProjects(){
-    try{
-      const res=await fetch("projects.json");
-      const data=await res.json();
-      const grid=this.root.querySelector("#projects");
+    const res=await fetch("projects.json");
+    const data=await res.json();
+    const wrap=this.root.querySelector("#projects");
 
-      data.forEach((p,i)=>{
-        const el=document.createElement("div");
-        el.className="card project";
-        el.setAttribute("data-reveal","");
-        el.innerHTML=`
-          <img src="${p.thumbnail}" alt="${p.name}">
+    data.forEach(p=>{
+      const el=document.createElement("div");
+      el.className="card project";
+      el.setAttribute("data-reveal","");
+      el.innerHTML=`
+        <img src="${p.thumbnail}">
+        <div>
           <h4>${p.name}</h4>
           <p>${p.description}</p>
-        `;
-        grid.appendChild(el);
-      });
+        </div>
+      `;
+      wrap.appendChild(el);
+    });
 
-      this.reveal();
-    }catch(e){
-      console.error("Failed to load projects.json",e);
-    }
+    this.reveal();
   }
 
   reveal(){
     [...this.root.querySelectorAll("[data-reveal]:not(.show)")].forEach((el,i)=>{
-      setTimeout(()=>el.classList.add("show"),i*120);
+      setTimeout(()=>el.classList.add("show"),i*140);
     });
   }
 
-  discord(){
-    return `<svg viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.8 3l-.2.4a18 18 0 0 1 4.2 2.1"/></svg>`;
-  }
-
-  x(){
-    return `<svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23 22"/></svg>`;
+  initMusic(){
+    const tryPlay=()=>this.audio.play().catch(()=>{});
+    tryPlay();
+    document.addEventListener("click",tryPlay,{once:true});
   }
 }
 
