@@ -1,49 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <title>hyperion-java</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+/* ================= THEME ================= */
 :root{
   --bg:#050505;
-  --fg:#fff;
+  --fg:#ffffff;
   --muted:#9aa0a6;
-  --glass:rgba(255,255,255,.07);
+  --glass:rgba(255,255,255,.09);
   --stroke:rgba(255,255,255,.14);
-  --blue:#5da9ff;
-  --shadow-lg:0 40px 120px rgba(0,0,0,.9);
-  --shadow-md:0 20px 60px rgba(0,0,0,.6);
+  --accent:#5da9ff;
+  --shadow-lg:0 50px 160px rgba(0,0,0,.95);
+  --shadow-md:0 25px 80px rgba(0,0,0,.75);
 }
 
-*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
-html,body{margin:0;background:var(--bg);color:var(--fg)}
-body{min-height:320vh;overflow-x:hidden}
+html[data-theme="light"]{
+  --bg:#f4f5f7;
+  --fg:#0b0b0b;
+  --muted:#555;
+  --glass:rgba(0,0,0,.06);
+  --stroke:rgba(0,0,0,.15);
+  --accent:#2563eb;
+  --shadow-lg:0 40px 120px rgba(0,0,0,.25);
+  --shadow-md:0 20px 60px rgba(0,0,0,.18);
+}
 
-/* ambient vignette */
+/* ================= BASE ================= */
+*{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,sans-serif}
+html,body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  transition:background .9s ease,color .9s ease;
+  scroll-snap-type:y mandatory;
+  scroll-behavior:smooth;
+}
+body{overflow-x:hidden}
+
+/* ================= BOOT ================= */
+#boot{
+  position:fixed;
+  inset:0;
+  background:#000;
+  z-index:999;
+  animation:boot 1.4s ease forwards;
+}
+@keyframes boot{
+  0%,65%{opacity:1}
+  100%{opacity:0;pointer-events:none}
+}
+
+/* ================= LIGHT ================= */
+#light{
+  position:fixed;
+  width:600px;
+  height:600px;
+  border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle,rgba(93,169,255,.15),transparent 65%);
+  mix-blend-mode:screen;
+  transform:translate(-50%,-50%);
+  z-index:0;
+}
+
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:
-    radial-gradient(circle at 50% 30%,rgba(93,169,255,.06),transparent 45%),
-    radial-gradient(circle at center,transparent 30%,#000 80%);
+  background:radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.8) 85%);
   pointer-events:none;
   z-index:0;
 }
 
 #app{position:relative;z-index:1}
 
-/* ================= HERO ================= */
-.hero{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
+/* ================= FLOATING CONTROLS ================= */
+.controls{
+  position:fixed;
+  top:20px;
+  right:20px;
+  display:flex;
+  gap:12px;
+  z-index:5;
 }
 
+.ctrl-btn{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--glass);
+  border:1px solid var(--stroke);
+  backdrop-filter:blur(20px);
+  color:var(--fg);
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:var(--shadow-md);
+  transition:transform .35s ease,box-shadow .35s ease;
+}
+.ctrl-btn:hover{
+  transform:scale(1.08);
+  box-shadow:var(--shadow-lg);
+}
+
+/* ================= SECTIONS ================= */
+section{
+  min-height:100vh;
+  scroll-snap-align:start;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:120px 24px;
+}
+
+/* ================= HERO ================= */
 .hero-inner{
+  text-align:center;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -55,15 +130,10 @@ body::before{
   height:104px;
   border-radius:50%;
   background:url("pfp.png") center/cover no-repeat;
-  box-shadow:
-    0 0 0 1px var(--stroke),
-    0 50px 140px rgba(0,0,0,.95);
+  box-shadow:0 0 0 1px var(--stroke),0 60px 170px rgba(0,0,0,.95);
   animation:float 7s ease-in-out infinite;
 }
-
-@keyframes float{
-  50%{transform:translateY(-8px)}
-}
+@keyframes float{50%{transform:translateY(-8px)}}
 
 h1{
   font-size:48px;
@@ -72,55 +142,27 @@ h1{
 }
 
 .subtitle{
-  max-width:580px;
+  max-width:600px;
   font-size:15px;
-  line-height:1.75;
+  line-height:1.8;
   color:var(--muted);
 }
 
-/* contact */
+.cursor{
+  display:inline-block;
+  width:10px;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
 .contact{
-  margin-top:6px;
   font-size:14px;
-  color:var(--blue);
-  background:rgba(93,169,255,.15);
-  border:1px solid rgba(93,169,255,.45);
-  padding:10px 18px;
+  color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 20%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 50%,transparent);
+  padding:11px 20px;
   border-radius:999px;
-  box-shadow:0 0 40px rgba(93,169,255,.25);
-}
-
-/* scroll */
-.scroll{
-  margin-top:26px;
-  font-size:11px;
-  letter-spacing:.4em;
-  color:#666;
-  animation:pulse 2.8s ease-in-out infinite;
-}
-
-@keyframes pulse{
-  50%{opacity:.35}
-}
-
-/* ================= SECTIONS ================= */
-.section{
-  padding:150px 24px;
-  display:flex;
-  justify-content:center;
-}
-
-.section-inner{
-  max-width:1100px;
-  width:100%;
-}
-
-.section-title{
-  text-align:center;
-  letter-spacing:.45em;
-  font-size:11px;
-  color:#666;
-  margin-bottom:40px;
+  box-shadow:0 0 55px color-mix(in srgb,var(--accent) 40%,transparent);
 }
 
 /* ================= CARDS ================= */
@@ -128,98 +170,69 @@ h1{
   background:var(--glass);
   backdrop-filter:blur(32px);
   border:1px solid var(--stroke);
-  border-radius:20px;
+  border-radius:24px;
   box-shadow:var(--shadow-md);
   transition:transform .9s ease,box-shadow .9s ease;
 }
-
 .card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-10px);
   box-shadow:var(--shadow-lg);
 }
 
 /* ================= SKILLS ================= */
 .skills{
+  max-width:1100px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
+  gap:30px;
 }
+.skill{padding:32px}
 
-.skill{
-  padding:28px;
-}
-
-.skill h3{
-  margin:0 0 10px;
-  font-size:17px;
-}
-
-.skill p{
-  margin:0;
-  font-size:14px;
-  line-height:1.7;
-  color:#ccc;
-}
-
-/* ================= PROJECTS (HORIZONTAL) ================= */
+/* ================= PROJECTS ================= */
 .projects{
+  max-width:1100px;
+  width:100%;
   display:flex;
   flex-direction:column;
-  gap:28px;
+  gap:34px;
 }
-
 .project{
   display:flex;
-  gap:26px;
-  padding:28px;
+  gap:30px;
+  padding:32px;
   align-items:center;
 }
-
 .project img{
-  width:280px;
-  height:160px;
+  width:330px;
+  height:185px;
   object-fit:cover;
-  border-radius:14px;
-  flex-shrink:0;
-  box-shadow:0 20px 60px rgba(0,0,0,.7);
-  transition:transform 1s ease;
+  border-radius:18px;
+  box-shadow:0 35px 100px rgba(0,0,0,.85);
+  transition:transform 1.2s ease;
 }
-
-.project:hover img{
-  transform:scale(1.05);
-}
-
-.project h4{
-  margin:0 0 8px;
-  font-size:18px;
-}
-
-.project p{
-  margin:0;
-  font-size:14px;
-  line-height:1.7;
-  color:#ccc;
-}
+.project:hover img{transform:scale(1.08)}
 
 /* ================= REVEAL ================= */
 [data-reveal]{
   opacity:0;
-  transform:translateY(28px) scale(.96);
-  transition:
-    opacity 1.4s cubic-bezier(.2,.8,.2,1),
-    transform 1.4s cubic-bezier(.2,.8,.2,1);
+  transform:translateY(38px) scale(.94);
+  transition:opacity 1.8s cubic-bezier(.2,.8,.2,1),
+             transform 1.8s cubic-bezier(.2,.8,.2,1);
 }
-
-[data-reveal].show{
-  opacity:1;
-  transform:none;
-}
+[data-reveal].show{opacity:1;transform:none}
 </style>
 </head>
 
 <body>
-<div id="app"></div>
+<div id="boot"></div>
+<div id="light"></div>
 
+<div class="controls">
+  <button id="themeToggle" class="ctrl-btn">🌙</button>
+  <button id="musicToggle" class="ctrl-btn">▶️</button>
+</div>
+
+<div id="app"></div>
 <audio id="bgm" src="music.mp3" loop></audio>
 
 <script>
@@ -227,89 +240,123 @@ class ProfilePage{
   constructor(root){
     this.root=root;
     this.audio=document.getElementById("bgm");
+    this.light=document.getElementById("light");
+    this.themeBtn=document.getElementById("themeToggle");
+    this.musicBtn=document.getElementById("musicToggle");
+    this.theme=document.documentElement;
+    this.isPlaying=false;
     this.render();
-    this.reveal();
-    this.loadProjects();
+    this.initTypewriter();
+    this.initTheme();
     this.initMusic();
+    this.initMouseLight();
   }
 
   render(){
     this.root.innerHTML=`
-      <section class="hero">
+      <section>
         <div class="hero-inner">
-          <div class="avatar" data-reveal></div>
-          <h1 data-reveal>hyperion-java</h1>
-
-          <div class="subtitle" data-reveal>
-            Software Developer with 3+ years of experience crafting
-            high-performance systems using Java.
-          </div>
-
+          <div class="avatar"></div>
+          <h1 id="type-name"></h1>
+          <div class="subtitle" id="type-sub"></div>
           <div class="contact" data-reveal>
             Contact <strong>night_hyperion</strong> on Discord to hire me
           </div>
-
-          <div class="scroll" data-reveal>SCROLL</div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-inner">
-          <div class="section-title" data-reveal>SKILLS</div>
-          <div class="skills">
-            ${this.skill("Software Developer","Designed scalable systems, APIs, and tools with a focus on performance and maintainability.")}
-            ${this.skill("Full-Stack Engineering","Built responsive UIs and efficient backends, integrating databases, authentication, and APIs.")}
-            ${this.skill("Java Systems & Plugins","Developed custom Java applications and plugins with optimized logic and clean architecture.")}
-            ${this.skill("Web Performance & UX","Focused on animation timing, responsiveness, and UI polish for premium user experiences.")}
-          </div>
+      <section>
+        <div class="skills">
+          ${this.skill("Software Developer","Designed scalable systems, APIs, and tools with a focus on performance and maintainability.")}
+          ${this.skill("Full-Stack Engineering","Built responsive UIs and efficient backends, integrating databases, authentication, and APIs.")}
+          ${this.skill("Java Systems & Plugins","Developed custom Java applications and plugins with optimized logic and clean architecture.")}
+          ${this.skill("Web Performance & UX","Focused on animation timing, responsiveness, and UI polish for premium user experiences.")}
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-inner">
-          <div class="section-title" data-reveal>PROJECTS</div>
-          <div class="projects" id="projects"></div>
-        </div>
+      <section>
+        <div class="projects" id="projects"></div>
       </section>
     `;
   }
 
-  skill(title,desc){
-    return `<div class="card skill" data-reveal><h3>${title}</h3><p>${desc}</p></div>`;
+  skill(t,d){
+    return `<div class="card skill" data-reveal><h3>${t}</h3><p>${d}</p></div>`;
   }
 
   async loadProjects(){
     const res=await fetch("projects.json");
     const data=await res.json();
-    const wrap=this.root.querySelector("#projects");
-
+    const wrap=document.getElementById("projects");
     data.forEach(p=>{
       const el=document.createElement("div");
       el.className="card project";
       el.setAttribute("data-reveal","");
-      el.innerHTML=`
-        <img src="${p.thumbnail}">
-        <div>
-          <h4>${p.name}</h4>
-          <p>${p.description}</p>
-        </div>
-      `;
+      el.innerHTML=`<img src="${p.thumbnail}"><div><h4>${p.name}</h4><p>${p.description}</p></div>`;
       wrap.appendChild(el);
     });
-
     this.reveal();
   }
 
+  initTypewriter(){
+    const name="hyperion-java";
+    const sub="Software Developer with 3+ years of experience crafting high-performance systems using Java.";
+    const n=document.getElementById("type-name");
+    const s=document.getElementById("type-sub");
+
+    const type=(txt,el,spd,cb)=>{
+      let i=0;
+      const t=setInterval(()=>{
+        el.innerHTML=txt.slice(0,++i)+'<span class="cursor">|</span>';
+        if(i===txt.length){
+          clearInterval(t);
+          el.textContent=txt;
+          cb&&cb();
+        }
+      },spd);
+    };
+
+    type(name,n,38,()=>{
+      type(sub,s,16,()=>{
+        this.loadProjects();
+        this.reveal();
+      });
+    });
+  }
+
   reveal(){
-    [...this.root.querySelectorAll("[data-reveal]:not(.show)")].forEach((el,i)=>{
+    document.querySelectorAll("[data-reveal]").forEach((el,i)=>{
       setTimeout(()=>el.classList.add("show"),i*140);
     });
   }
 
+  initTheme(){
+    this.themeBtn.onclick=()=>{
+      const dark=this.theme.dataset.theme==="dark";
+      this.theme.dataset.theme=dark?"light":"dark";
+      this.themeBtn.textContent=dark?"☀️":"🌙";
+    };
+  }
+
   initMusic(){
-    const tryPlay=()=>this.audio.play().catch(()=>{});
-    tryPlay();
-    document.addEventListener("click",tryPlay,{once:true});
+    this.musicBtn.onclick=()=>{
+      if(this.isPlaying){
+        this.audio.pause();
+        this.musicBtn.textContent="▶️";
+      }else{
+        this.audio.play();
+        this.musicBtn.textContent="⏸";
+      }
+      this.isPlaying=!this.isPlaying;
+    };
+  }
+
+  initMouseLight(){
+    if("ontouchstart"in window){this.light.style.display="none";return}
+    window.addEventListener("mousemove",e=>{
+      this.light.style.left=e.clientX+"px";
+      this.light.style.top=e.clientY+"px";
+    });
   }
 }
 
