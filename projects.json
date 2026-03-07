@@ -73,6 +73,16 @@
     "name": "BreadCore",
     "thumbnail": "images/BreadCore.png",
     "description": "A core SMP plugin built for Bread SMP, packed with multiple essential and expandable gameplay features."
+  },
+  {  
+    "name": "MythicalSMP",
+    "thumbnail": "images/Lazy.png",
+    "description": "A SMP plugin which has custom gem's each with 2 custom abilities!"
+  },
+  {  
+    "name": "FrostSpear",
+    "thumbnail": "images/Lazy.png",
+    "description": "A plugin which lets you craft a custom Spear with a special ability."
   }
 ]
 
