@@ -1,88 +1,87 @@
 [
   {
     "name": "ElysiumPit",
-    "thumbnail": "images/elysiumpit.png",
+    "thumbnail": "images/icon.png",
     "description": "A high-intensity pit gamemode for the Elysium Network featuring custom items, unique currency, bespoke armor sets, and engaging PvP mechanics. Designed for competitive gameplay and leaderboards."
   },
   {
     "name": "ItemX",
-    "thumbnail": "images/itemx.png",
+    "thumbnail": "images/icon.png",
     "description": "A versatile item creation plugin with over 160+ fully customizable items, each with unique lore, names, and effects. Designed to enhance creativity and expand server gameplay possibilities."
   },
   {
     "name": "Leorion",
-    "thumbnail": "images/leorion.png",
+    "thumbnail": "images/icon.png",
     "description": "A fully custom MMORPG plugin including unique armor sets, mechanics, items, mobs, quests, and much more. Built to deliver a rich, immersive RPG experience within Minecraft."
   },
   {
     "name": "LeorionLogin",
-    "thumbnail": "images/leorionlogin.png",
+    "thumbnail": "images/icon.png",
     "description": "A secure, custom login plugin for Leorion servers, ensuring reliable authentication, account management, and enhanced security for players."
   },
   {
     "name": "RandomIdentity",
-    "thumbnail": "images/randomidentity.png",
+    "thumbnail": "images/icon.png",
     "description": "A plugin which using commands you can give all players or specific players random skins and usernames."
   },
   {
     "name": "ObfuscatedPlayer",
-    "thumbnail": "images/obfuscatedplayer.png",
+    "thumbnail": "images/icon.png",
     "description": "A plugin where when a player goes invisible their name is assigned random characters which also works with other plugin's GUI."
   },
   {
     "name": "LeagueMC",
-    "thumbnail": "images/leaguemc.png",
+    "thumbnail": "images/icon.png",
     "description": "An experimental MMORPG server with over 300+ active members, featuring custom armor, items, mobs, and advanced RPG mechanics. Designed as a proof-of-concept for large-scale MMORPG integration."
   },
   {
     "name": "TridentXMace",
-    "thumbnail": "images/tridentxmace.png",
+    "thumbnail": "images/icon.png",
     "description": "A custom plugin adding a unique trident with wind-based abilities, crafting rituals that grant unstable tridents with random effects, and other exciting features."
   },
   {
     "name": "AnthraxRPG",
-    "thumbnail": "images/anthraxrpg.png",
+    "thumbnail": "images/icon.png",
     "description": "A cutting-edge custom MMORPG server incorporating unique mechanics, immersive quests, and a rich progression system to deliver an engaging gameplay experience."
   },
   {
     "name": "HoldMyVillager",
-    "thumbnail": "images/HoldMyVillager.png",
+    "thumbnail": "images/icon.png",
     "description": "A custom plugin that allows players to pick up and carry villagers with ease."
   },
   {
     "name": "GhostSMP",
-    "thumbnail": "images/GhostSMP.png",
+    "thumbnail": "images/icon.png",
     "description": "An SMP plugin featuring collectible souls that grant unique abilities, inspired by Strength SMP–style mechanics."
   },
   {
     "name": "OniSMP",
-    "thumbnail": "images/OniSMP.png",
+    "thumbnail": "images/icon.png",
     "description": "A detailed mask-based plugin with multiple variants, each providing powerful and unique abilities."
   },
   {
     "name": "ItemAdderLocker",
-    "thumbnail": "images/ItemAdderLocker.png",
+    "thumbnail": "images/icon.png",
     "description": "Lets players safely store and manage their ItemAdder cosmetic skins in a dedicated locker system."
   },
   {
     "name": "UnboundSMP",
-    "thumbnail": "images/UnboundSMP.png",
+    "thumbnail": "images/icon.png",
     "description": "A custom SMP plugin introducing playable races combined with a dynamic luck system."
   },
   {  
     "name": "BreadCore",
-    "thumbnail": "images/BreadCore.png",
+    "thumbnail": "images/icon.png",
     "description": "A core SMP plugin built for Bread SMP, packed with multiple essential and expandable gameplay features."
   },
   {  
     "name": "MythicalSMP",
-    "thumbnail": "images/Lazy.png",
+    "thumbnail": "images/icon.png",
     "description": "A SMP plugin which has custom gem's each with 2 custom abilities!"
   },
   {  
     "name": "FrostSpear",
-    "thumbnail": "images/Lazy.png",
+    "thumbnail": "images/icon.png",
     "description": "A plugin which lets you craft a custom Spear with a special ability."
   }
 ]
-
